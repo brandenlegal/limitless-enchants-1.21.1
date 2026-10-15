@@ -1,9 +1,11 @@
 name: Build 1.21.1
 
+
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
+
 
 jobs:
   build:
@@ -14,8 +16,8 @@ jobs:
         run: unzip -q limitless-enchants-1.21.1-project.zip -d project && mv project/* ./
       - name: Remove YACL dependency
         run: |
-          sed -i '/yet_another_config_lib/d' project/build.gradle
-          rm -f project/src/main/java/com/branden/limitlessenchants/client/ModConfigScreen.java
+          sed -i '/yet_another_config_lib/d' build.gradle
+          rm -f src/main/java/com/branden/limitlessenchants/client/ModConfigScreen.java
           echo "YACL removed"
       - name: Set up JDK 21
         uses: actions/setup-java@v4
